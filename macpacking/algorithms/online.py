@@ -108,7 +108,6 @@ class WorstFit(Online):
         
         # Place items one by one
         for w in stream:
-            print(w)
             # Find the best bin that can accommodate
             # w
     

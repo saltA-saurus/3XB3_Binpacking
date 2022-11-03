@@ -1,6 +1,6 @@
 from .. import Solution, WeightSet
 from ..model import Offline
-from .online import NextFit as Nf_online
+from .online import NextFit as Nf_online, FirstFit as Ff_online, BestFit as Bf_online, WorstFit as Wf_online
 
 
 class NextFit(Offline):
@@ -18,7 +18,7 @@ class FirstFitDecreasing(Offline):
         '''An offline version of FirstFit, ordering the weight stream in descending order and
         delegating to the online version (avoiding code duplication)'''
         weights = sorted(weights, reverse=True)
-        delegation = Nf_online()
+        delegation = Ff_online()
         return delegation((capacity, weights))
 
 class BestFitDecreasing(Offline):
@@ -27,7 +27,7 @@ class BestFitDecreasing(Offline):
         '''An offline version of BestFit, ordering the weigh stream in descending order and
         delegating to the online version (avoiding code duplication)'''
         weights = sorted(weights, reverse=True)
-        delegation = Nf_online()
+        delegation = Bf_online()
         return delegation((capacity, weights))
 
 class WorstFitDecreasing(Offline):
@@ -36,5 +36,5 @@ class WorstFitDecreasing(Offline):
         '''An offline version of WorstFit, ordering the weigh stream in descending order and
         delegating to the online version (avoiding code duplication)'''
         weights = sorted(weights, reverse=True)
-        delegation = Nf_online()
+        delegation = Wf_online()
         return delegation((capacity, weights))

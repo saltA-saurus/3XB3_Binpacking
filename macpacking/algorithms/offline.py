@@ -11,3 +11,30 @@ class NextFit(Offline):
         weights = sorted(weights, reverse=True)
         delegation = Nf_online()
         return delegation((capacity, weights))
+
+class FirstFitDecreasing(Offline):
+
+    def _process(self, capacity: int, weights: WeightSet) -> Solution:
+        '''An offline version of FirstFit, ordering the weight stream in descending order and
+        delegating to the online version (avoiding code duplication)'''
+        weights = sorted(weights, reverse=True)
+        delegation = Nf_online()
+        return delegation((capacity, weights))
+
+class BestFitDecreasing(Offline):
+
+    def _process(self, capacity: int, weights: WeightSet) -> Solution:
+        '''An offline version of BestFit, ordering the weigh stream in descending order and
+        delegating to the online version (avoiding code duplication)'''
+        weights = sorted(weights, reverse=True)
+        delegation = Nf_online()
+        return delegation((capacity, weights))
+
+class WorstFitDecreasing(Offline):
+
+    def _process(self, capacity: int, weights: WeightSet) -> Solution:
+        '''An offline version of WorstFit, ordering the weigh stream in descending order and
+        delegating to the online version (avoiding code duplication)'''
+        weights = sorted(weights, reverse=True)
+        delegation = Nf_online()
+        return delegation((capacity, weights))

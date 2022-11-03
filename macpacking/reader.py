@@ -49,15 +49,12 @@ class BinppReader(DatasetReader):
 class JburkardtReader(DatasetReader):
     '''Read problem description according to the Jburkardt format'''
 
-    def __init__(self, filename_c: str, filename_s: str, filename_w: str) -> None:
+    def __init__(self, filename_c: str, filename_w: str) -> None:
         if not path.exists(filename_c):
             raise ValueError(f'Unkown file [{filename_c}]')
-        if not path.exists(filename_s):
-            raise ValueError(f'Unkown file [{filename_s}]')
         if not path.exists(filename_w):
             raise ValueError(f'Unkown file [{filename_w}]')
         self.__filename_c = filename_c
-        self.__filename_s = filename_s
         self.__filename_w = filename_w
 
     def _load_data_from_disk(self) -> WeightSet:

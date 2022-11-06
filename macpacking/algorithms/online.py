@@ -39,6 +39,7 @@ class FirstFit(Online):
         # create a list of remaining capacities for each bin
         bin_remaining = []
         for w in stream:
+            print("Next weight is:", w)
             j = 0
             # iterate from the first to last bin
             # to find a bin with space remaining for the weight
@@ -132,4 +133,79 @@ class WorstFit(Online):
                 solution[wi].append(w)
                 bin_remaining[wi] -= w
         
+        return solution
+
+class RefinedFirstFit(Online):
+
+    def _process(self, capacity: int, stream: WeightStream) -> Solution:
+
+        bin_index = 0
+        solution = []
+        # create a list of remaining capacities for each bin
+        # created
+        bin_remaining = []
+        # create a list of classes for each bin created
+        bin_class = []
+        # a counter variable for the (mk)th B_2 pieces
+        k = 0
+        for w in stream:
+
+            if w > capacity/2 and w <= capacity:
+                item_class = 'a_piece'
+            elif w > (capacity*2)/5 and w <= capacity/2:
+                item_class = 'b_1_piece'
+            elif w > capacity/3 and w <= (capacity*2)/5:
+                item_class = 'b_2_piece'
+                k += 1
+            elif w > 0 and w <= capacity/3:
+                item_class = 'x_piece'
+
+            j = 0
+            # iterate from the first to last bin
+            # to find a bin class with space remaining for the weight
+            while j < bin_index:
+                if bin_class[j] == 1:
+                    if item_class == 'a_piece' or (item_class == 'b_2_piece' and (k%6 == 0 or k%7 == 0 or k%8 == 0 or k%9 == 0)):
+                        if bin_remaining[j] >= w:
+                            solution[j].append(w)
+                            bin_remaining[j] -= w 
+                            break
+                elif bin_class[j] == 2:
+                    if item_class == 'b_1_piece':
+                        if bin_remaining[j] >= w:
+                            solution[j].append(w)
+                            bin_remaining[j] -= w 
+                            break
+                elif bin_class[j] == 3:
+                    if item_class == 'b_2_piece' and (k%6 != 0 or k%7 != 0 or k%8 != 0 or k%9 != 0):
+                        if bin_remaining[j] >= w:
+                            solution[j].append(w)
+                            bin_remaining[j] -= w 
+                            break
+                elif bin_class[j] == 4:
+                    if item_class == 'x_piece':
+                        if bin_remaining[j] >= w:
+                            solution[j].append(w)
+                            bin_remaining[j] -= w 
+                            break
+
+                j += 1
+
+            # if no space remaining in previous class bin,
+            # create a new bin for the weight as well
+            # as a corresponding remaining capacity
+            if j == bin_index:
+                if item_class == 'a_piece':
+                    bin_class.append(1)
+                elif item_class == 'b_1_piece':
+                    bin_class.append(2)
+                elif item_class == 'b_2_piece':
+                    bin_class.append(3)
+                elif item_class == 'x_piece':
+                    bin_class.append(4)
+                solution.append([w])
+                bin_remaining.append(capacity)
+                bin_remaining[bin_index] = capacity - w
+                bin_index += 1
+
         return solution

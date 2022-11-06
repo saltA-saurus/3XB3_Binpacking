@@ -37,7 +37,6 @@ class FirstFit(Online):
         bin_index = 0
         solution = []
         # create a list of remaining capacities for each bin
-        # created
         bin_remaining = []
         for w in stream:
             print("Next weight is:", w)

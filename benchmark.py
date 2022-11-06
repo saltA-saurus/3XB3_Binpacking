@@ -2,8 +2,8 @@ import pyperf
 import json
 from os import listdir
 from os.path import isfile, join, basename
-from macpacking.algorithms.online import NextFit as NextFitOnline, BestFit as BestFitOnline, FirstFit as FirstFitOnline, WorstFit as WorstFitOnline
-from macpacking.algorithms.offline import NextFit as NextFitOffline, FirstFitDecreasing as FirstFitOffline, BestFitDecreasing as BestFitOffline, WorstFitDecreasing as WorstFitOffline
+from macpacking.algorithms.online import *
+from macpacking.algorithms.offline import *
 from macpacking.reader import BinppReader
 from macpacking.algorithms.factory import BinpackerFactory
 
@@ -16,15 +16,19 @@ CASES = './_datasets/binpp/test'
 
 
 def main():
-    '''Example of benchmark code'''
     cases = list_case_files(CASES)
     # list of all algorithms
     algorithms = ['NextFitOnline', 'FirstFitOnline', 'BestFitOnline', 'WorstFitOnline', 'NextFitOffline', 'FirstFitOffline', 'BestFitOffline', 'WorstFitOffline']
-    run_bench(cases, algorithms)
+    kpis = run_bench(cases, algorithms)
+    write_json(kpis)
 
 
 def list_case_files(dir: str) -> list[str]:
     return sorted([f'{dir}/{f}' for f in listdir(dir) if isfile(join(dir, f))])
+
+def write_json(kpis):
+    with open("out/plot_data.json", 'w') as output:
+        json.dump(kpis, output)
 
 def get_kpis(solution, capacity):
 
@@ -63,20 +67,17 @@ def run_bench(cases: list[str], algorithms):
             data = BinppReader(case).online()
             bench = runner.bench_func(name, binpacker, data)
             if bench != None and bench.get_nrun() > 1:
-                kpis[algo][basename(case)][basename(name)] = {}
                 solution = binpacker(data)
                 kpi_values = get_kpis(solution, data[0])
-                # assigning kpis as dictionary keys for each case; values are kpi values
-                kpis[algo][basename(case)][basename(name)]['Bins Used'] = kpi_values[0]
-                kpis[algo][basename(case)][basename(name)]['Average Weight Per Bin'] = kpi_values[1]
-                kpis[algo][basename(case)][basename(name)]['Average Unused Space Per Bin'] = kpi_values[2]
-                kpis[algo][basename(case)][basename(name)]['Time'] = bench.mean()
+                kpis[algo][basename(case)]['Bins Used'] = kpi_values[0]
+                kpis[algo][basename(case)]['Average Weight Per Bin'] = kpi_values[1]
+                kpis[algo][basename(case)]['Average Unused Space Per Bin'] = kpi_values[2]
+                kpis[algo][basename(case)]['Time'] = bench.mean()
 
                 # TEST DELETE LATER
                 print(kpis)
     return kpis
                 
 
-# if __name__ == "__main__":
-#     main()
-main()
+if __name__ == "__main__":
+    main()

@@ -39,7 +39,6 @@ class FirstFit(Online):
         # create a list of remaining capacities for each bin
         bin_remaining = []
         for w in stream:
-            print("Next weight is:", w)
             j = 0
             # iterate from the first to last bin
             # to find a bin with space remaining for the weight

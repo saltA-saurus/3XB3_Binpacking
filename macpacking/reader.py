@@ -51,9 +51,9 @@ class JburkardtReader(DatasetReader):
 
     def __init__(self, filename_c: str, filename_w: str) -> None:
         if not path.exists(filename_c):
-            raise ValueError(f'Unkown file [{filename_c}]')
+            raise ValueError(f'Unknown file [{filename_c}]')
         if not path.exists(filename_w):
-            raise ValueError(f'Unkown file [{filename_w}]')
+            raise ValueError(f'Unknown file [{filename_w}]')
         self.__filename_c = filename_c
         self.__filename_w = filename_w
 
@@ -68,3 +68,25 @@ class JburkardtReader(DatasetReader):
                     continue
                 weights.append(int(line))
             return (capacity, weights)
+
+class OracleReader:
+
+    def __init__(self, filename: str) -> None:
+        if not path.exists(filename):
+            raise ValueError(f'Unknown file [{filename}]')
+        self.__filename = filename
+
+    def _load_data(self, filename: str) -> int:
+        optimal = []
+        oracle = filename
+        with open(oracle, 'r') as file:
+            next(file)
+            for line in file:
+                row = line.split(",")
+                optimal.append((row[0], row[1].replace("\n", "")))
+
+        for problem in optimal:
+            if problem[0] in self.__filename:
+                optimal_solution = int(problem[1])
+
+        return optimal_solution

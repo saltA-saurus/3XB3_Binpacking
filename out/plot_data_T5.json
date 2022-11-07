@@ -1,0 +1,286 @@
+{
+    "ListSchedulingOnline":{
+       "N4C2W2_A.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":250.15833333333333,
+          "Average Unused Space Per Bin":-130.15833333333333,
+          "Time":1.4237719217735645e-05,
+          "Standard Deviation":2.0756281837186107e-14
+       },
+       "N4C2W2_B.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":249.225,
+          "Average Unused Space Per Bin":-129.225,
+          "Time":1.2215628255181817e-05,
+          "Standard Deviation":1.0378140918593053e-14
+       },
+       "N4C2W2_C.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":246.94166666666666,
+          "Average Unused Space Per Bin":-126.94166666666666,
+          "Time":1.3291441955557797e-05,
+          "Standard Deviation":4.151256367437221e-14
+       },
+       "N4C2W2_D.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":252.275,
+          "Average Unused Space Per Bin":-132.275,
+          "Time":1.3913758951803837e-05,
+          "Standard Deviation":6.226884551155832e-14
+       },
+       "N4C2W2_E.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":251.21666666666667,
+          "Average Unused Space Per Bin":-131.21666666666667,
+          "Time":1.408343495696111e-05,
+          "Standard Deviation":5.70797750522618e-14
+       },
+       "N4C2W2_F.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":256.0,
+          "Average Unused Space Per Bin":-136.0,
+          "Time":1.29026527912283e-05,
+          "Standard Deviation":0.0
+       },
+       "N4C2W2_G.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":248.38333333333333,
+          "Average Unused Space Per Bin":-128.38333333333333,
+          "Time":1.1430535278359837e-05,
+          "Standard Deviation":8.302512734874443e-14
+       },
+       "N4C2W2_H.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":248.44166666666666,
+          "Average Unused Space Per Bin":-128.44166666666666,
+          "Time":1.2939588826584487e-05,
+          "Standard Deviation":4.151256367437221e-14
+       },
+       "N4C2W2_I.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":252.36666666666667,
+          "Average Unused Space Per Bin":-132.36666666666667,
+          "Time":1.301936248777243e-05,
+          "Standard Deviation":8.302512734874443e-14
+       },
+       "N4C2W2_J.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":252.06666666666666,
+          "Average Unused Space Per Bin":-132.06666666666666,
+          "Time":1.2437272134787254e-05,
+          "Standard Deviation":4.151256367437221e-14
+       },
+       "N4C2W2_K.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":252.73333333333332,
+          "Average Unused Space Per Bin":-132.73333333333332,
+          "Time":1.1667272237018503e-05,
+          "Standard Deviation":1.4529397286030275e-13
+       },
+       "N4C2W2_L.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":254.05833333333334,
+          "Average Unused Space Per Bin":-134.05833333333334,
+          "Time":1.1655629272470474e-05,
+          "Standard Deviation":4.151256367437221e-14
+       },
+       "N4C2W2_M.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":251.41666666666666,
+          "Average Unused Space Per Bin":-131.41666666666666,
+          "Time":1.2420983276347405e-05,
+          "Standard Deviation":1.0378140918593055e-13
+       },
+       "N4C2W2_N.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":255.04166666666666,
+          "Average Unused Space Per Bin":-135.04166666666666,
+          "Time":1.1377389221086294e-05,
+          "Standard Deviation":1.0378140918593055e-13
+       },
+       "N4C2W2_O.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":248.20833333333334,
+          "Average Unused Space Per Bin":-128.20833333333334,
+          "Time":1.1413368530277523e-05,
+          "Standard Deviation":1.0378140918593055e-13
+       },
+       "N4C2W2_P.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":255.50833333333333,
+          "Average Unused Space Per Bin":-135.50833333333333,
+          "Time":1.1054985555010906e-05,
+          "Standard Deviation":8.302512734874443e-14
+       },
+       "N4C2W2_Q.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":251.15,
+          "Average Unused Space Per Bin":-131.15,
+          "Time":1.1683821716168551e-05,
+          "Standard Deviation":6.226884551155832e-14
+       },
+       "N4C2W2_R.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":250.06666666666666,
+          "Average Unused Space Per Bin":-130.06666666666666,
+          "Time":1.128886454259496e-05,
+          "Standard Deviation":4.151256367437221e-14
+       },
+       "N4C2W2_S.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":256.075,
+          "Average Unused Space Per Bin":-136.075,
+          "Time":1.2146136576281682e-05,
+          "Standard Deviation":1.2453769102311664e-13
+       },
+       "N4C2W2_T.BPP.txt":{
+          "Bins Used":120,
+          "Average Weight Per Bin":250.125,
+          "Average Unused Space Per Bin":-130.125,
+          "Time":1.1475806681371381e-05,
+          "Standard Deviation":0.0
+       }
+    },
+    "BestFitOffline":{
+       "N4C2W2_A.BPP.txt":{
+          "Bins Used":253,
+          "Average Weight Per Bin":118.65217391304348,
+          "Average Unused Space Per Bin":1.3478260869565217,
+          "Time":1.2319329325327643e-06,
+          "Standard Deviation":8.844944934016214e-14
+       },
+       "N4C2W2_B.BPP.txt":{
+          "Bins Used":254,
+          "Average Weight Per Bin":117.74409448818898,
+          "Average Unused Space Per Bin":2.2559055118110236,
+          "Time":1.4283040491484359e-06,
+          "Standard Deviation":2.1400039888868328e-14
+       },
+       "N4C2W2_C.BPP.txt":{
+          "Bins Used":249,
+          "Average Weight Per Bin":119.00803212851406,
+          "Average Unused Space Per Bin":0.9919678714859438,
+          "Time":1.1417800903782786e-06,
+          "Standard Deviation":5.763688482370325e-14
+       },
+       "N4C2W2_D.BPP.txt":{
+          "Bins Used":258,
+          "Average Weight Per Bin":117.33720930232558,
+          "Average Unused Space Per Bin":2.6627906976744184,
+          "Time":1.2882971064387405e-06,
+          "Standard Deviation":1.477497714047662e-13
+       },
+       "N4C2W2_E.BPP.txt":{
+          "Bins Used":257,
+          "Average Weight Per Bin":117.29961089494164,
+          "Average Unused Space Per Bin":2.700389105058366,
+          "Time":1.2106109110621154e-06,
+          "Standard Deviation":2.3934116572233313e-14
+       },
+       "N4C2W2_F.BPP.txt":{
+          "Bins Used":272,
+          "Average Weight Per Bin":112.94117647058823,
+          "Average Unused Space Per Bin":7.0588235294117645,
+          "Time":1.1706038411422407e-06,
+          "Standard Deviation":1.2407898710347336e-13
+       },
+       "N4C2W2_G.BPP.txt":{
+          "Bins Used":252,
+          "Average Weight Per Bin":118.27777777777777,
+          "Average Unused Space Per Bin":1.7222222222222223,
+          "Time":1.338780008956301e-06,
+          "Standard Deviation":1.0026236665091766e-13
+       },
+       "N4C2W2_H.BPP.txt":{
+          "Bins Used":255,
+          "Average Weight Per Bin":116.91372549019607,
+          "Average Unused Space Per Bin":3.0862745098039217,
+          "Time":1.2610704676174756e-06,
+          "Standard Deviation":1.0857002552084543e-13
+       },
+       "N4C2W2_I.BPP.txt":{
+          "Bins Used":262,
+          "Average Weight Per Bin":115.58778625954199,
+          "Average Unused Space Per Bin":4.412213740458015,
+          "Time":1.3365478642723971e-06,
+          "Standard Deviation":1.4047192580965554e-14
+       },
+       "N4C2W2_J.BPP.txt":{
+          "Bins Used":256,
+          "Average Weight Per Bin":118.15625,
+          "Average Unused Space Per Bin":1.84375,
+          "Time":1.3858207702610593e-06,
+          "Standard Deviation":0.0
+       },
+       "N4C2W2_K.BPP.txt":{
+          "Bins Used":259,
+          "Average Weight Per Bin":117.0965250965251,
+          "Average Unused Space Per Bin":2.9034749034749034,
+          "Time":1.3230287297568328e-06,
+          "Standard Deviation":1.3951708841118148e-13
+       },
+       "N4C2W2_L.BPP.txt":{
+          "Bins Used":263,
+          "Average Weight Per Bin":115.92015209125475,
+          "Average Unused Space Per Bin":4.079847908745247,
+          "Time":1.3473396174042603e-06,
+          "Standard Deviation":5.6081845830540934e-14
+       },
+       "N4C2W2_M.BPP.txt":{
+          "Bins Used":261,
+          "Average Weight Per Bin":115.59386973180077,
+          "Average Unused Space Per Bin":4.406130268199234,
+          "Time":1.2964155832924835e-06,
+          "Standard Deviation":1.2314817536580478e-14
+       },
+       "N4C2W2_N.BPP.txt":{
+          "Bins Used":265,
+          "Average Weight Per Bin":115.49056603773585,
+          "Average Unused Space Per Bin":4.509433962264151,
+          "Time":1.3726589965864142e-06,
+          "Standard Deviation":5.237795194551193e-14
+       },
+       "N4C2W2_O.BPP.txt":{
+          "Bins Used":253,
+          "Average Weight Per Bin":117.72727272727273,
+          "Average Unused Space Per Bin":2.272727272727273,
+          "Time":1.585783271773611e-06,
+          "Standard Deviation":1.1614574155778867e-13
+       },
+       "N4C2W2_P.BPP.txt":{
+          "Bins Used":266,
+          "Average Weight Per Bin":115.26691729323308,
+          "Average Unused Space Per Bin":4.7330827067669174,
+          "Time":1.5824445724565984e-06,
+          "Standard Deviation":1.1501468977146415e-13
+       },
+       "N4C2W2_Q.BPP.txt":{
+          "Bins Used":258,
+          "Average Weight Per Bin":116.81395348837209,
+          "Average Unused Space Per Bin":3.186046511627907,
+          "Time":1.2346397018488572e-06,
+          "Standard Deviation":6.723941692671994e-14
+       },
+       "N4C2W2_R.BPP.txt":{
+          "Bins Used":256,
+          "Average Weight Per Bin":117.21875,
+          "Average Unused Space Per Bin":2.78125,
+          "Time":1.1851291783789482e-06,
+          "Standard Deviation":0.0
+       },
+       "N4C2W2_S.BPP.txt":{
+          "Bins Used":273,
+          "Average Weight Per Bin":112.56043956043956,
+          "Average Unused Space Per Bin":7.43956043956044,
+          "Time":1.240436388642389e-06,
+          "Standard Deviation":2.2706113416086828e-13
+       },
+       "N4C2W2_T.BPP.txt":{
+          "Bins Used":256,
+          "Average Weight Per Bin":117.24609375,
+          "Average Unused Space Per Bin":2.75390625,
+          "Time":1.4622241973794025e-06,
+          "Standard Deviation":0.0
+       }
+    }
+ }

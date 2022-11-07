@@ -10,7 +10,7 @@ from macpacking.algorithms.factory import BinpackerFactory
 #   - 500 objects (N4)
 #   - bin capacity of 120 (C2)
 #   - and weight in the [20,100] interval (W2)
-CASES = './_datasets/binpp/test'
+CASES = './_datasets/binpp/N4C2W2'
 
 
 def main():
@@ -23,7 +23,7 @@ def main():
     #     'BestFitOffline', 'WorstFitOffline',
     #     'RefinedFirstFitOnline'
     # ]
-    algorithms = ['BaselineMNPOffline', 'ListSchedulingOnline']
+    algorithms = ['BestFitOffline']
     kpis = run_bench(cases, algorithms)
     write_json(kpis)
 

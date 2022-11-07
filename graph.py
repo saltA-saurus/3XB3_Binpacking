@@ -16,11 +16,7 @@ class GetData:
 
         online_data = [[] for _ in range(len(datasets))]
         offline_data = [[] for _ in range(len(datasets))]
-
-        # algorithms: NextFitOnline, FirstFitOnline,
-        # BestFitOnline, WorstFitOnline, NextFitOffline,
-        # FirstFitOffline, BestFitOffline, WorstFitOffline
-        # datasets: N4C2W2_A.BPP.txt N4C2W2_B.BPP.txt
+        
         for i in range(len(algorithms)):  # 0 - 7
             isOnline = True
             if 'Offline' in algorithms[i]:
@@ -93,12 +89,6 @@ class PlotGraph:
                 offline_data.append(0)
             else:
                 online_data.append(0)
-
-        # debug
-        # print('Algorithms:', algorithms)
-        # print('Datasets:', datasets)
-        # print('Online Data:', online_data)
-        # print('Offline Data:', offline_data)
 
         plt.bar(r1, online_data, color='orangered',
                 width=width, edgecolor='black',

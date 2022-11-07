@@ -1,12 +1,11 @@
 from macpacking.reader import DatasetReader, BinppReader, OracleReader
-from macpacking.model  import Online, Offline
-from matplotlib.ticker import MaxNLocator
+from macpacking.model import Online, Offline
+# from matplotlib.ticker import MaxNLocator
 import macpacking.algorithms.offline as offline
 import macpacking.algorithms.online as online
-import macpacking.algorithms.baseline as baseline
 from macpacking.algorithms.factory import BinpackerFactory
-import matplotlib.pyplot as plt
-from graph import PlotGraph
+# import matplotlib.pyplot as plt
+# from graph import PlotGraph
 from os.path import basename
 
 # We consider:
@@ -40,47 +39,59 @@ dataset_smallC_largeN = '_datasets/binpp/N4C1W4/N4C1W4_B.BPP.txt'
 #   - and weight in the [2,95] interval (W1)
 dataset_smallN_largeC = '_datasets/binpp/N1C3W1/N1C3W1_B.BPP.txt'
 oracle_dataset = '_datasets/oracle.csv'
-cases = [dataset_small, dataset_medium, dataset_large, dataset_hard, dataset_smallC_largeN, dataset_smallN_largeC]
-titles = ['Small Dataset (N1C1W1)', 'Medium Dataset (N2C2W2)', 'Large Dataset (N4C3W4)', 'Hard Dataset (HARD5)', 'Small C & Large N (N4C1W4)', 'Large C & Small N (N1C3W1)']
-algorithms = ['BaselineOffline', 'NextFitOnline', 'FirstFitOnline', 'BestFitOnline', 'WorstFitOnline', 'NextFitOffline', 'FirstFitOffline', 'BestFitOffline', 'WorstFitOffline']
+cases = [
+    dataset_small, dataset_medium, dataset_large, dataset_hard,
+    dataset_smallC_largeN, dataset_smallN_largeC
+]
+titles = [
+    'Small Dataset (N1C1W1)', 'Medium Dataset (N2C2W2)',
+    'Large Dataset (N4C3W4)', 'Hard Dataset (HARD5)',
+    'Small C & Large N (N4C1W4)', 'Large C & Small N (N1C3W1)'
+]
+algorithms = [
+    'BaselineOffline', 'NextFitOnline', 'FirstFitOnline',
+    'BestFitOnline', 'WorstFitOnline', 'NextFitOffline',
+    'FirstFitOffline', 'BestFitOffline', 'WorstFitOffline'
+]
 basename_cases = [basename(x) for x in cases]
 
 for i in range(len(cases)):
 
     optimal_solution = OracleReader([i])
     improvement_margin = []
+    o_s = optimal_solution._load_data(oracle_dataset)
 
     reader: DatasetReader = BinppReader(cases[i])
     print(f'Dataset: {basename(cases[i])}')
-    print(f'Optimal Solution: {optimal_solution._load_data(oracle_dataset)}\n')
+    print(f'Optimal Solution: {o_s}\n')
 
     strategy: BinpackerFactory.build('')
     result = strategy(reader.offline())
-    improvement_margin.append(len(result) - optimal_solution._load_data(oracle_dataset))
+    improvement_margin.append(len(result) - o_s)
 
     strategy: Offline = offline.FirstFitDecreasing()
     result = strategy(reader.offline())
-    improvement_margin.append(len(result) - optimal_solution._load_data(oracle_dataset))
+    improvement_margin.append(len(result) - o_s)
 
     strategy: Offline = offline.BestFitDecreasing()
     result = strategy(reader.offline())
-    improvement_margin.append(len(result) - optimal_solution._load_data(oracle_dataset))
+    improvement_margin.append(len(result) - o_s)
 
     strategy: Offline = offline.WorstFitDecreasing()
     result = strategy(reader.offline())
-    improvement_margin.append(len(result) - optimal_solution._load_data(oracle_dataset))
+    improvement_margin.append(len(result) - o_s)
 
     strategy: Online = online.FirstFit()
     result = strategy(reader.online())
-    improvement_margin.append(len(result) - optimal_solution._load_data(oracle_dataset))
+    improvement_margin.append(len(result) - o_s)
 
     strategy: Online = online.BestFit()
     result = strategy(reader.online())
-    improvement_margin.append(len(result) - optimal_solution._load_data(oracle_dataset))
+    improvement_margin.append(len(result) - o_s)
 
     strategy: Online = online.WorstFit()
     result = strategy(reader.online())
-    improvement_margin.append(len(result) - optimal_solution._load_data(oracle_dataset))
+    improvement_margin.append(len(result) - o_s)
 
     # X and Y Axis
     # xAxis = [algo for algo in algorithms]

@@ -1,8 +1,56 @@
-from macpacking.reader import DatasetReader, BinppReader
+import pytest
+from macpacking.reader import DatasetReader, BinppReader, JburkardtReader
 from macpacking.model import Online, Offline
 import macpacking.algorithms.offline as offline
 import macpacking.algorithms.online as online
 import macpacking.algorithms.baseline as baseline
+
+
+# Set of algorithms considered for testing
+offline_algo = [
+    offline.FirstFitDecreasing,
+    offline.BestFitDecreasing, offline.WorstFitDecreasing
+]
+
+online_algo = [
+    online.Terrible, online.FirstFit,
+    online.BestFit, online.WorstFit,
+    online.RefinedFirstFit
+]
+
+mnp_algo = [
+    online.ListScheduling
+]
+
+
+@pytest.mark.parametrize("algo", offline_algo)
+def test_domain_offline(algo):
+    dataset_c = 'tests/test_c.txt'
+    dataset_w = 'tests/test_w.txt'
+    reader: DatasetReader = JburkardtReader(dataset_c, dataset_w)
+    strategy: Offline = algo()
+    result = strategy(reader.offline())
+    assert result == []
+
+
+@pytest.mark.parametrize("algo", online_algo)
+def test_domain_online(algo):
+    dataset_c = 'tests/test_c.txt'
+    dataset_w = 'tests/test_w.txt'
+    reader: DatasetReader = JburkardtReader(dataset_c, dataset_w)
+    strategy: Online = algo()
+    result = strategy(reader.offline())
+    assert result == []
+
+
+@pytest.mark.parametrize("algo", mnp_algo)
+def test_domain_mnp(algo):
+    dataset_c = 'tests/test_c.txt'
+    dataset_w = 'tests/test_w.txt'
+    reader: DatasetReader = JburkardtReader(dataset_c, dataset_w)
+    strategy: Online = algo()
+    result = strategy(reader.offline())
+    assert result == [[], [], [], [], [], [], [], [], [], []]
 
 
 def test_benmaier_baseline():

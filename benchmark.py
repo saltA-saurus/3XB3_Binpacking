@@ -16,14 +16,14 @@ CASES = './_datasets/binpp/N4C2W2'
 def main():
     cases = list_case_files(CASES)
     # list of all algorithms
-    # algorithms = [
-    #     'NextFitOnline', 'FirstFitOnline',
-    #     'BestFitOnline', 'WorstFitOnline',
-    #     'NextFitOffline', 'FirstFitOffline',
-    #     'BestFitOffline', 'WorstFitOffline',
-    #     'RefinedFirstFitOnline'
-    # ]
-    algorithms = ['BestFitOffline']
+    algorithms = [
+        'NextFitOnline', 'FirstFitOnline',
+        'BestFitOnline', 'WorstFitOnline',
+        'NextFitOffline', 'FirstFitOffline',
+        'BestFitOffline', 'WorstFitOffline',
+        'RefinedFirstFitOnline'
+    ]
+    # algorithms = ['BestFitOffline']
     kpis = run_bench(cases, algorithms)
     write_json(kpis)
 

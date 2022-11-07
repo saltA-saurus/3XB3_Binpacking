@@ -12,7 +12,7 @@ from macpacking.algorithms.factory import BinpackerFactory
 #   - 500 objects (N4)
 #   - bin capacity of 120 (C2)
 #   - and weight in the [20,100] interval (W2)
-CASES = './_datasets/binpp/test'
+CASES = './_datasets/binpp/N4C2W2'
 
 
 def main():
@@ -46,7 +46,6 @@ def get_kpis(solution, capacity):
     for bin in solution:
         avg_unused_space += capacity - sum(bin)
     avg_unused_space /= bins_used
-       
 
     return (bins_used, avg_weight_per_bin, avg_unused_space)
 

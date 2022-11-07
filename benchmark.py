@@ -22,7 +22,6 @@ def main():
     kpis = run_bench(cases, algorithms)
     write_json(kpis)
 
-
 def list_case_files(dir: str) -> list[str]:
     return sorted([f'{dir}/{f}' for f in listdir(dir) if isfile(join(dir, f))])
 
@@ -77,6 +76,5 @@ def run_bench(cases: list[str], algorithms):
                 print(kpis)
     return kpis
                 
-
 if __name__ == "__main__":
     main()

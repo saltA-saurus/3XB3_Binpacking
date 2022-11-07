@@ -208,3 +208,48 @@ class RefinedFirstFit(Online):
                 bin_index += 1
 
         return solution
+
+class ListScheduling(Online):
+
+    def _process(self, bin_num: int, stream: WeightStream) -> Solution:
+        
+        solution = [[] for _ in range(bin_num)]
+
+        # Create an array to store space in bins
+        # there can be at most bins as bin_num
+        bin_weight = [0 for _ in range(bin_num)]
+        
+        # Place items one by one
+        for w in stream:
+            
+            # keep track of the bin with the smallest sum
+            min_sum = 1e7
+
+            # Initialize index of min_sum
+            bin_index = 0
+
+            # initialize for if a w is inserted
+            inserted = False
+    
+            # Find the bin with the smallest sum 
+            # that can accommodate w
+            for j in range(bin_num):
+                # base case if bin is empty
+                # automatically has the smallest sum
+                if (bin_weight[j] == 0):
+                    solution[j].append(w)
+                    bin_weight[j] += w
+                    inserted = True
+                    break
+
+                if bin_weight[j] < min_sum:
+                    min_sum = bin_weight[j]
+                    bin_index = j
+
+            # Assign the item to the bin with the
+            # smallest sum
+            if inserted == False:
+                solution[bin_index].append(w)
+                bin_weight[bin_index] += w
+        
+        return solution

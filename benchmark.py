@@ -40,19 +40,19 @@ def write_json(kpis):
 def get_kpis(solution, capacity):
 
     # number of bins
-    bins_used = len(solution)
+    bn_used = len(solution)
 
     # average weight of bins
     avg_weight_per_bin = 0
     for bin in solution:
         avg_weight_per_bin += sum(bin)
-    avg_weight_per_bin /= bins_used
+    avg_weight_per_bin /= bn_used
 
     # average space unused
     avg_unused_space = 0
     for bin in solution:
         avg_unused_space += capacity - sum(bin)
-    avg_unused_space /= bins_used
+    avg_unused_space /= bn_used
 
     # standard deviation
     standard_deviation = 0
@@ -60,7 +60,7 @@ def get_kpis(solution, capacity):
         standard_deviation += (sum(bin) - avg_weight_per_bin)
     standard_deviation = (((standard_deviation)**2)/len(solution))**0.5
 
-    return (bins_used, avg_weight_per_bin, avg_unused_space, standard_deviation)
+    return (bn_used, avg_weight_per_bin, avg_unused_space, standard_deviation)
 
 
 def run_bench(cases: list[str], algorithms):

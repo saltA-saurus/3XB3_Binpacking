@@ -34,7 +34,7 @@ class BinppReader(DatasetReader):
 
     def __init__(self, filename: str) -> None:
         if not path.exists(filename):
-            raise ValueError(f'Unkown file [{filename}]')
+            raise ValueError(f'Unknown file [{filename}]')
         self.__filename = filename
 
     def _load_data_from_disk(self) -> WeightSet:

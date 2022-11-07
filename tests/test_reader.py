@@ -1,7 +1,21 @@
+import pytest
 from macpacking.reader import DatasetReader
 from macpacking.reader import BinppReader
 from macpacking.reader import JburkardtReader
 from macpacking.reader import OracleReader
+
+
+@pytest.mark.parametrize("reader", [BinppReader, OracleReader])
+def test_domain(reader):
+    with pytest.raises(ValueError):
+        reader('unknown.txt')
+
+
+# jburkardt format reads two files instead of one
+@pytest.mark.parametrize("reader", [JburkardtReader])
+def test_jburkardt_domain(reader):
+    with pytest.raises(ValueError):
+        reader('unknown_1.txt', 'unknown_2.txt')
 
 
 def test_binpp_reader():

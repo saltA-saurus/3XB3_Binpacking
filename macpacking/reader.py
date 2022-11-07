@@ -70,6 +70,7 @@ class JburkardtReader(DatasetReader):
             return (capacity, weights)
 
 class OracleReader:
+    '''Read optimal nb_bins according to the Oracle format'''
 
     def __init__(self, filename: str) -> None:
         if not path.exists(filename):

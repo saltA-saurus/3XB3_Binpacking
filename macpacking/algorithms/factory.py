@@ -8,6 +8,8 @@ from .offline import FirstFitDecreasing as FirstFitOffline
 from .offline import BestFitDecreasing as BestFitOffline
 from .offline import WorstFitDecreasing as WorstFitOffline
 from .baseline import BenMaier
+from .online import ListScheduling as ListSchedulingOnline
+from .baseline import BenMaierMNP as BenMaierMNPOffline
 from ..model import BinPacker
 
 
@@ -36,6 +38,10 @@ class BinpackerFactory():
                 selected = BenMaier()
             case 'RefinedFirstFitOnline':
                 selected = RefinedFirstFitOnline()
+            case 'ListSchedulingOnline':
+                selected = ListSchedulingOnline()
+            case 'BaselineMNPOffline':
+                selected = BenMaierMNPOffline()
             case _:
                 raise ValueError(name)
         return selected

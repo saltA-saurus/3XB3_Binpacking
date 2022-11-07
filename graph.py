@@ -16,7 +16,7 @@ class GetData:
 
         online_data = [[] for _ in range(len(datasets))]
         offline_data = [[] for _ in range(len(datasets))]
-        
+
         for i in range(len(algorithms)):  # 0 - 7
             isOnline = True
             if 'Offline' in algorithms[i]:

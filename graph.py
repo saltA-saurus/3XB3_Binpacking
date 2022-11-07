@@ -65,12 +65,10 @@ class PlotGraph:
                 offline_data = plot_data[1]
                 algorithms = plot_data[2]
                 datasets = plot_data[3]
-
-                #datasetInd = datasets.index(dataset_name)
                 
                 n1 = len(online_data)
                 n2 = len(offline_data)
-                r1 = [] # num of online algos
+                r1 = [] 
                 for i in range(max(n1, n2)):
                         r1.append(i)
                 width = 0.25
@@ -86,13 +84,21 @@ class PlotGraph:
                                 if algo.replace('Offline', '') not in x_tick_strings:
                                         x_tick_strings.append(algo.replace('Offline', ''))
 
+                while len(online_data) != len(offline_data):
+                        if len(online_data) > len(offline_data):
+                                offline_data.append(0)
+                        else:
+                                online_data.append(0)
+
                 # debug
                 # print('Algorithms:', algorithms)
                 # print('Datasets:', datasets)
                 # print('Online Data:', online_data)
                 # print('Offline Data:', offline_data)
 
-                plt.bar(r1, online_data, color='orangered', width=width, edgecolor='black', label='Online')
+                plt.bar(r1, online_data, color='orangered',
+                        width=width, edgecolor='black',
+                        label='Online')
                 plt.bar(r2, offline_data, color = 'deepskyblue',
                         width=width, edgecolor = 'black',
                         label='Offline')

@@ -1,4 +1,4 @@
-from .online import NextFit as NextFitOnline, BestFit as BestFitOnline, FirstFit as FirstFitOnline, WorstFit as WorstFitOnline
+from .online import NextFit as NextFitOnline, BestFit as BestFitOnline, FirstFit as FirstFitOnline, WorstFit as WorstFitOnline, RefinedFirstFit as RefinedFirstFitOnline
 from .offline import NextFit as NextFitOffline, FirstFitDecreasing as FirstFitOffline, BestFitDecreasing as BestFitOffline, WorstFitDecreasing as WorstFitOffline
 from .baseline import BenMaier
 from ..model import BinPacker
@@ -26,6 +26,8 @@ class BinpackerFactory():
                 selected = WorstFitOffline()
             case 'BaselineOffline':
                 selected = BenMaier()
+            case 'RefinedFirstFitOnline':
+                selected = RefinedFirstFitOnline()
             case _:
                 raise ValueError(name)
         return selected

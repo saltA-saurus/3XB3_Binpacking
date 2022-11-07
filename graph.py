@@ -4,7 +4,7 @@ import json
 
 class GetData:
 
-    def load_json_data(filename):  # filename = 'out/plot_data.json'
+    def load_json_data(filename):
         file = open(filename)
         plot_data = json.load(file)
         file.close()

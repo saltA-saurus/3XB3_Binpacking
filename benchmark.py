@@ -10,19 +10,20 @@ from macpacking.algorithms.factory import BinpackerFactory
 #   - 500 objects (N4)
 #   - bin capacity of 120 (C2)
 #   - and weight in the [20,100] interval (W2)
-CASES = './_datasets/binpp/N4C2W2'
+CASES = './_datasets/binpp/test'
 
 
 def main():
     cases = list_case_files(CASES)
     # list of all algorithms
-    algorithms = [
-        'NextFitOnline', 'FirstFitOnline',
-        'BestFitOnline', 'WorstFitOnline',
-        'NextFitOffline', 'FirstFitOffline',
-        'BestFitOffline', 'WorstFitOffline',
-        'RefinedFirstFitOnline'
-    ]
+    # algorithms = [
+    #     'NextFitOnline', 'FirstFitOnline',
+    #     'BestFitOnline', 'WorstFitOnline',
+    #     'NextFitOffline', 'FirstFitOffline',
+    #     'BestFitOffline', 'WorstFitOffline',
+    #     'RefinedFirstFitOnline'
+    # ]
+    algorithms = ['BaselineMNPOffline', 'ListSchedulingOnline']
     kpis = run_bench(cases, algorithms)
     write_json(kpis)
 
@@ -53,7 +54,13 @@ def get_kpis(solution, capacity):
         avg_unused_space += capacity - sum(bin)
     avg_unused_space /= bins_used
 
-    return (bins_used, avg_weight_per_bin, avg_unused_space)
+    # standard deviation
+    standard_deviation = 0
+    for bin in solution:
+        standard_deviation += (sum(bin) - avg_weight_per_bin)
+    standard_deviation = (((standard_deviation)**2)/len(solution))**0.5
+
+    return (bins_used, avg_weight_per_bin, avg_unused_space, standard_deviation)
 
 
 def run_bench(cases: list[str], algorithms):
@@ -81,9 +88,8 @@ def run_bench(cases: list[str], algorithms):
                 kpis[algo][b_c]['Average Weight Per Bin'] = kpi_values[1]
                 kpis[algo][b_c]['Average Unused Space Per Bin'] = kpi_values[2]
                 kpis[algo][b_c]['Time'] = bench.mean()
+                kpis[algo][b_c]['Standard Deviation'] = kpi_values[3]
 
-                # TEST DELETE LATER
-                print(kpis)
     return kpis
 
 

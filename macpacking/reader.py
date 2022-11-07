@@ -46,6 +46,7 @@ class BinppReader(DatasetReader):
                 weights.append(int(reader.readline()))
             return (capacity, weights)
 
+
 class JburkardtReader(DatasetReader):
     '''Read problem description according to the Jburkardt format'''
 
@@ -68,6 +69,7 @@ class JburkardtReader(DatasetReader):
                     continue
                 weights.append(int(line))
             return (capacity, weights)
+
 
 class OracleReader:
     '''Read optimal nb_bins according to the Oracle format'''

@@ -1,4 +1,7 @@
-from macpacking.reader import DatasetReader, BinppReader, JburkardtReader, OracleReader
+from macpacking.reader import DatasetReader
+from macpacking.reader import BinppReader
+from macpacking.reader import JburkardtReader
+from macpacking.reader import OracleReader
 
 
 def test_binpp_reader():
@@ -13,6 +16,7 @@ def test_binpp_reader():
     assert capacity == reader.offline()[0]
     assert oracle == sorted(reader.offline()[1])
 
+
 def test_jburkardt_reader():
     dataset_c = '_datasets/jburkardt/p01_c.txt'
     dataset_w = '_datasets/jburkardt/p01_w.txt'
@@ -23,6 +27,7 @@ def test_jburkardt_reader():
     reader: DatasetReader = JburkardtReader(dataset_c, dataset_w)
     assert capacity == reader.offline()[0]
     assert oracle == sorted(reader.offline()[1])
+
 
 def test_oracle_reader():
     dataset = '_datasets/binpp/N1C1W1/N1C1W1_B.BPP.txt'

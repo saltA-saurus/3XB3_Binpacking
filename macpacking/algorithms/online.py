@@ -18,10 +18,11 @@ class NextFit(Online):
                 remaining = capacity - w
         return solution
 
+
 class Terrible(Online):
 
     def _process(self, capacity: int, stream: WeightStream) -> Solution:
-        
+
         solution = []
         for w in stream:
             # if there is enough capacity for the weight
@@ -30,10 +31,11 @@ class Terrible(Online):
                 solution.append([w])
         return solution
 
+
 class FirstFit(Online):
 
     def _process(self, capacity: int, stream: WeightStream) -> Solution:
-        
+
         bin_index = 0
         solution = []
         # create a list of remaining capacities for each bin
@@ -45,7 +47,7 @@ class FirstFit(Online):
             while j < bin_index:
                 if bin_remaining[j] >= w:
                     solution[j].append(w)
-                    bin_remaining[j] -= w 
+                    bin_remaining[j] -= w
                     break
                 j += 1
 
@@ -60,10 +62,11 @@ class FirstFit(Online):
 
         return solution
 
+
 class BestFit(Online):
 
     def _process(self, capacity: int, stream: WeightStream) -> Solution:
-        
+
         bin_index = 0
         solution = []
         bin_remaining = []
@@ -71,17 +74,17 @@ class BestFit(Online):
             j = 0
             # minimum space left in bin and index of best bin
             min = capacity + 1
-            bi = 0 
+            bi = 0
 
             # locate a bin with space remaining and fill it up
             # as much as possible, until no other weights can fit in it
             for j in range(bin_index):
                 if (bin_remaining[j] >= w and (bin_remaining[j] - w) < min):
-                    
-                    bi = j
-                    min = bin_remaining[j] - w 
 
-            # create a new bin if no other bins have 
+                    bi = j
+                    min = bin_remaining[j] - w
+
+            # create a new bin if no other bins have
             # remaining capacity
             if min == (capacity + 1):
                 solution.append([w])
@@ -95,31 +98,31 @@ class BestFit(Online):
 
         return solution
 
+
 class WorstFit(Online):
 
     def _process(self, capacity: int, stream: WeightStream) -> Solution:
-        
+
         solution = []
 
         # Initialize result (Count of bins)
         bin_index = 0
         bin_remaining = []
-        
+
         # Place items one by one
         for w in stream:
             # Find the best bin that can accommodate
             # w
-    
+
             # Initialize maximum space left and index
             # of worst bin
-            mx,wi = -1,0
-    
+            mx, wi = -1, 0
+
             for j in range(bin_index):
                 if (bin_remaining[j] >= w and bin_remaining[j] - w > mx):
                     wi = j
                     mx = bin_remaining[j] - w
-                
-    
+
             # If no bin could accommodate w[i],
             # create a new bin
             if (mx == -1):
@@ -127,12 +130,13 @@ class WorstFit(Online):
                 bin_remaining.append(capacity)
                 bin_remaining[bin_index] = capacity - w
                 bin_index += 1
-            
-            else: # Assign the item to best bin
+
+            else:  # Assign the item to best bin
                 solution[wi].append(w)
                 bin_remaining[wi] -= w
-        
+
         return solution
+
 
 class RefinedFirstFit(Online):
 
@@ -164,28 +168,32 @@ class RefinedFirstFit(Online):
             # to find a bin class with space remaining for the weight
             while j < bin_index:
                 if bin_class[j] == 1:
-                    if item_class == 'a_piece' or (item_class == 'b_2_piece' and (k%6 == 0 or k%7 == 0 or k%8 == 0 or k%9 == 0)):
+                    if (item_class == 'a_piece' or
+                       (item_class == 'b_2_piece' and
+                        ((k % 6 == 0) or (k % 7 == 0) or
+                         (k % 8 == 0) or (k % 9 == 0)))):
                         if bin_remaining[j] >= w:
                             solution[j].append(w)
-                            bin_remaining[j] -= w 
+                            bin_remaining[j] -= w
                             break
                 elif bin_class[j] == 2:
                     if item_class == 'b_1_piece':
                         if bin_remaining[j] >= w:
                             solution[j].append(w)
-                            bin_remaining[j] -= w 
+                            bin_remaining[j] -= w
                             break
                 elif bin_class[j] == 3:
-                    if item_class == 'b_2_piece' and (k%6 != 0 or k%7 != 0 or k%8 != 0 or k%9 != 0):
+                    if (item_class == 'b_2_piece' and
+                       (k % 6 != 0 or k % 7 != 0 or k % 8 != 0 or k % 9 != 0)):
                         if bin_remaining[j] >= w:
                             solution[j].append(w)
-                            bin_remaining[j] -= w 
+                            bin_remaining[j] -= w
                             break
                 elif bin_class[j] == 4:
                     if item_class == 'x_piece':
                         if bin_remaining[j] >= w:
                             solution[j].append(w)
-                            bin_remaining[j] -= w 
+                            bin_remaining[j] -= w
                             break
 
                 j += 1
@@ -209,19 +217,20 @@ class RefinedFirstFit(Online):
 
         return solution
 
+
 class ListScheduling(Online):
 
     def _process(self, bin_num: int, stream: WeightStream) -> Solution:
-        
+
         solution = [[] for _ in range(bin_num)]
 
         # Create an array to store space in bins
         # there can be at most bins as bin_num
         bin_weight = [0 for _ in range(bin_num)]
-        
+
         # Place items one by one
         for w in stream:
-            
+
             # keep track of the bin with the smallest sum
             min_sum = 1e7
 
@@ -230,8 +239,8 @@ class ListScheduling(Online):
 
             # initialize for if a w is inserted
             inserted = False
-    
-            # Find the bin with the smallest sum 
+
+            # Find the bin with the smallest sum
             # that can accommodate w
             for j in range(bin_num):
                 # base case if bin is empty
@@ -248,8 +257,8 @@ class ListScheduling(Online):
 
             # Assign the item to the bin with the
             # smallest sum
-            if inserted == False:
+            if not inserted:
                 solution[bin_index].append(w)
                 bin_weight[bin_index] += w
-        
+
         return solution
